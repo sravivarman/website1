@@ -67,70 +67,155 @@ quality = 75
 
 [menus]
 
+# -----------------------------
+# Home
+# -----------------------------
 [[menus.main]]
-identifier = "archives"
-parent = ""
-# you can add extra information before the name (HTML format is supported), such as icons
-pre = ""
-# you can add extra information after the name (HTML format is supported), such as icons
-post = ""
-name = "Archives"
-url = "/archives/"
-# title will be shown when you hover on this menu link
-title = ""
+identifier = "home"
+name = "Home"
+url = "/"
 weight = 1
 
-# FixIt 0.2.14 | NEW add user-defined content to menu items
 [menus.main.params]
-# add css class to a specific menu item
-class = ""
-# whether set as a draft menu item whose function is similar to a draft post/page
-draft = false
-# FixIt 0.2.16 | NEW add fontawesome icon to a specific menu item
-icon = "fa-solid fa-archive"
-# FixIt 0.2.16 | NEW set menu item type, optional values: ["mobile", "desktop"]
-type = ""
-# FixIt 0.3.9 | NEW whether to show the submenu item divider line
-divided = false
+icon = "fa-solid fa-house"
 
+
+# -----------------------------
+# Teaching
+# -----------------------------
+[[menus.main]]
+identifier = "teaching"
+name = "Teaching"
+url = "/teaching/"
+weight = 2
+
+[menus.main.params]
+icon = "fa-solid fa-chalkboard-teacher"
+
+
+# Teaching → Courses
+[[menus.main]]
+identifier = "courses"
+parent = "teaching"
+name = "Courses"
+url = "/courses/"
+weight = 1
+
+[menus.main.params]
+icon = "fa-solid fa-book-open"
+
+
+# -----------------------------
+# Blog
+# -----------------------------
+[[menus.main]]
+identifier = "blog"
+name = "Blog"
+url = "/archives/"
+weight = 3
+
+[menus.main.params]
+icon = "fa-solid fa-feather"
+
+
+# Blog → Archives
+[[menus.main]]
+identifier = "archives"
+parent = "blog"
+name = "Archives"
+url = "/archives/"
+weight = 1
+
+[menus.main.params]
+icon = "fa-solid fa-archive"
+
+
+# Blog → Categories
 [[menus.main]]
 identifier = "categories"
-parent = ""
-pre = ""
-post = ""
+parent = "blog"
 name = "Categories"
 url = "/categories/"
-title = ""
 weight = 2
 
 [menus.main.params]
 icon = "fa-solid fa-folder-tree"
 
+
+# Blog → Collections
+[[menus.main]]
+identifier = "collections"
+parent = "blog"
+name = "Collections"
+url = "/collections/"
+weight = 3
+
+[menus.main.params]
+icon = "fa-solid fa-layer-group"
+
+
+# Blog → Tags
 [[menus.main]]
 identifier = "tags"
-parent = ""
-pre = ""
-post = ""
+parent = "blog"
 name = "Tags"
 url = "/tags/"
-title = ""
-weight = 3
+weight = 4
 
 [menus.main.params]
 icon = "fa-solid fa-tags"
 
+
+# -----------------------------
+# Projects
+# -----------------------------
+[[menus.main]]
+identifier = "projects"
+name = "Projects"
+url = "/projects/"
+weight = 4
+
+[menus.main.params]
+icon = "fa-solid fa-diagram-project"
+
+
+# -----------------------------
+# Research
+# -----------------------------
+[[menus.main]]
+identifier = "research"
+name = "Research"
+url = "/research/"
+weight = 5
+
+[menus.main.params]
+icon = "fa-solid fa-flask"
+
+
+# -----------------------------
+# About
+# -----------------------------
 [[menus.main]]
 identifier = "about"
-pre = ""
-post = ""
 name = "About"
 url = "/about/"
-title = ""
+weight = 90
+
+[menus.main.params]
+icon = "fa-solid fa-user"
+
+
+# -----------------------------
+# Contact
+# -----------------------------
+[[menus.main]]
+identifier = "contact"
+name = "Contact"
+url = "/contact/"
 weight = 100
 
 [menus.main.params]
-icon = "fa-solid fa-quote-left"
-
+icon = "fa-solid fa-envelope"
 
 # -------------------------------------------------------------------------------------
 # Related content Configuration
