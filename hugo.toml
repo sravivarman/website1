@@ -11,7 +11,7 @@
 # -------------------------------------------------------------------------------------
 
 # website title
-title = ""
+title = "S Ravivarman"
 # Hostname (and path) to the root
 baseURL = "http://localhost:1313"
 # theme list
