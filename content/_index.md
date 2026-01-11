@@ -100,26 +100,6 @@ Courses emphasize:
 
 ---
 
-## <i class="fa-solid fa-newspaper"></i> Recent Blog Posts
-
-{{< recent-posts 6 >}}
-
-<div style="margin-top:0.75rem;">
-<a href="/archives/">Browse all posts →</a>
-</div>
-
----
-
-## <i class="fa-solid fa-note-sticky"></i> Recent Class Notes & Topics
-
-{{< recent-posts 6 "notes" >}}
-
-<div style="margin-top:0.75rem;">
-<a href="/categories/">Explore by topic →</a>
-</div>
-
----
-
 ## <i class="fa-solid fa-diagram-project"></i> Projects & Applied Learning
 
 Projects form an integral part of my teaching and mentoring.
