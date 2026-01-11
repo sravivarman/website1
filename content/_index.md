@@ -25,55 +25,64 @@ real-world systems, and sound engineering practice.
 
 ## <i class="fa-solid fa-compass"></i> What You’ll Find Here
 
-{{< columns >}}
+<div style="display:flex; gap:1.5rem; margin-top:1.5rem; flex-wrap:wrap;">
 
-### <i class="fa-solid fa-chalkboard-teacher"></i> Teaching
-Course materials, lecture notes, worked examples, and explanations designed to build
-strong conceptual foundations and practical understanding.
+<div style="flex:1; min-width:260px; padding:1.5rem; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.06);">
+<h3><i class="fa-solid fa-chalkboard-teacher"></i> Teaching</h3>
+<p>
+Course materials, lecture notes, worked examples, and explanations designed
+to build strong conceptual foundations.
+</p>
+<a href="/teaching/">Explore Teaching →</a>
+</div>
 
-[Explore Teaching →](/teaching/)
+<div style="flex:1; min-width:260px; padding:1.5rem; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.06);">
+<h3><i class="fa-solid fa-pen-nib"></i> Writing</h3>
+<p>
+Blog posts based on classroom topics, emerging technologies,
+and reflections on engineering education.
+</p>
+<a href="/archives/">Read the Blog →</a>
+</div>
 
----
+<div style="flex:1; min-width:260px; padding:1.5rem; border-radius:14px; box-shadow:0 8px 24px rgba(0,0,0,0.06);">
+<h3><i class="fa-solid fa-flask"></i> Research & Practice</h3>
+<p>
+Explorations in electric vehicles, power electronics,
+control systems, and evolving technologies.
+</p>
+<a href="/research/">View Research →</a>
+</div>
 
-### <i class="fa-solid fa-pen-nib"></i> Writing
-Blog posts based on classroom discussions, emerging technologies, and reflections
-on engineering education and practice.
-
-[Read the Blog →](/archives/)
-
----
-
-### <i class="fa-solid fa-flask"></i> Research & Practice
-Explorations in electric vehicles, power electronics, control systems, and evolving
-engineering technologies.
-
-[View Research →](/research/)
-
-{{< /columns >}}
+</div>
 
 ---
 
 ## <i class="fa-solid fa-chalkboard-user"></i> Currently Teaching
 
-{{< columns >}}
+<div style="display:flex; gap:1.2rem; margin-top:1.2rem; flex-wrap:wrap;">
 
-### ⚡ Electric Vehicles  
-**B.Tech – EEE (III Year)**  
+<div style="flex:1; min-width:300px; padding:1.4rem; border-radius:12px; background:#fafafa;">
+<h3>⚡ Electric Vehicles</h3>
+<p><strong>B.Tech – EEE (III Year)</strong></p>
+<p>
+EV architectures, electric machines, power electronics,
+energy storage systems, and system integration.
+</p>
+</div>
 
-Electric vehicle architectures, electric machines, power electronics,
-energy storage systems, and system-level integration.
+<div style="flex:1; min-width:300px; padding:1.4rem; border-radius:12px; background:#fafafa;">
+<h3>🌐 IoT and its Applications</h3>
+<p><strong>B.Tech – EEE (IV Year)</strong></p>
+<p>
+Sensing, connectivity, data flow, cloud integration,
+and real-world IoT engineering applications.
+</p>
+</div>
 
----
+</div>
 
-### 🌐 IoT and its Applications  
-**B.Tech – EEE (IV Year)**  
-
-Sensing, connectivity, data acquisition, cloud integration,
-and real-world engineering applications of IoT systems.
-
-{{< /columns >}}
-
-👉 **Full materials:** [Courses](/courses/)
+👉 **[Full course materials →](/courses/)**
 
 ---
 
@@ -84,7 +93,7 @@ and real-world engineering applications of IoT systems.
 >
 > Understanding — not memorization — is the basis of meaningful learning.
 
-My courses emphasize:
+Courses emphasize:
 - Physical interpretation before formal analysis  
 - Multiple solution strategies  
 - Simulation as a tool for insight, not substitution  
@@ -120,7 +129,7 @@ They focus on:
 - Design trade-offs  
 - Documentation and critical reflection  
 
-👉 **[Projects](/projects/)**
+👉 **[Projects →](/projects/)**
 
 ---
 
