@@ -119,6 +119,19 @@ weight = 3
 [menus.main.params]
 icon = "fa-solid fa-tags"
 
+[[menus.main]]
+identifier = "about"
+pre = ""
+post = ""
+name = "About"
+url = "/about/"
+title = ""
+weight = 100
+
+[menus.main.params]
+icon = "fa-solid fa-quote-left"
+
+
 # -------------------------------------------------------------------------------------
 # Related content Configuration
 # See: https://gohugo.io/content-management/related-content/
