@@ -1,32 +1,21 @@
-# Hugo default output directory
-public/
-resources/
+# editor config
+**/.vscode/
 
-# Hugo
-.hugo_build.lock
-jsconfig.json
-
-# NPM
+# dependencies
 node_modules/
-.eslintcache
 
-# VSCode
-.vscode/*
-!.vscode/extensions.json
-!.vscode/settings.json
+# generated types
+.astro/
+.vercel/
 
-# OS Files
-## Windows
-Thumbs.db
-ehthumbs.db
-Desktop.ini
-$RECYCLE.BIN/
+# build output
+dist/
 
-## OSX
-.DS_Store
+# logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*
 
-## Linux
-.directory
-
-CHANGELOG.md
-.stash/
+# private config
+.env
