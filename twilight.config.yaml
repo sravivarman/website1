@@ -168,13 +168,13 @@ navbar:
             "Archive"
         - # 一级导航链接 - 展览 (自定义)
             # 导航名称
-            name: "Exhibition"
+            name: "Courses"
             # 导航链接
-            url: "/exhibition/"
+            url: "/courses/"
             # 导航图标
-            icon: "material-symbols:person"
+            icon: "material-symbols:book"
             # 导航描述
-            description: "A collection of my creative works and experiences"
+            description: "Learn. Apply. Succeed."
             # 子链接
             children:
                 - # 二级导航链接 - 项目 (预设)
@@ -252,23 +252,52 @@ profile:
     # 信息配置
     name: "S. Ravivarman"
     # 简介配置
-    bio: "Learn, While You Can..."
+    bio: "Engineer. Educator. Researcher."
     # 链接配置
     links:
         - # 链接示例
             # 名字
-            name: "GitHub"
+            name: "LinkedIn"
             # 图标
-            icon: "fa6-brands:github"
+            icon: "fa6-brands:linkedin"
             # 链接
-            url: "https://github.com/sravivarman"
+            url: "https://www.linkedin.com/in/sravivarman"
+        - # 链接示例
+            # 名字
+            name: "Google Scholar"
+            # 图标
+            icon: "fa6-brands:google-scholar"
+            # 链接
+            url: "https://scholar.google.com/citations?user=RicMeyUAAAAJ"  
+        - # 链接示例
+            # 名字
+            name: "Scopus"
+            # 图标
+            icon: "fa6-solid:graduation-cap"
+            # 链接
+            url: "https://www.scopus.com/authid/detail.uri?authorId=58545728600"
+        - # 链接示例
+            # 名字
+            name: "ORCID"
+            # 图标
+            icon: "fa6-brands:orcid"
+            # 链接
+            url: "https://orcid.org/0000-0000-0000-0000"
+        - # 链接示例
+            # 名字
+            name: "Instagram"
+            # 图标
+            icon: "fa6-brands:instagram"
+            # 链接
+            url: "https://www.instagram.com/srvcando"
+
 
 # 公告配置
 announcement:
     # 公告标题
     title: "Announcement"
     # 公告内容
-    content: "Welcome to my blog!"
+    content: "Welcome to my Website!"
     # 允许用户关闭公告
     closable: true
     # 链接配置
