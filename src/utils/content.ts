@@ -1,6 +1,8 @@
 import { type CollectionEntry, getCollection } from "astro:content";
 
 import { getCategoryUrl } from "@utils/url";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 
 
 // // Retrieve posts and sort them by publication date
@@ -90,7 +92,7 @@ export async function getCategoryList(): Promise<Category[]> {
     const count: { [key: string]: number } = {};
     allBlogPosts.forEach((post: { data: { category: string | null } }) => {
         if (!post.data.category) {
-            const ucKey = "Uncategorized";
+            const ucKey = i18n(I18nKey.uncategorized);
             count[ucKey] = count[ucKey] ? count[ucKey] + 1 : 1;
             return;
         }

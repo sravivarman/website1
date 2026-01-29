@@ -1,5 +1,7 @@
 ---
 import { NAVBAR_HEIGHT } from "@constants/constants";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 import WidgetLayout from "./widgetLayout.astro";
 
 
@@ -15,7 +17,7 @@ const { id: propId, class: className, style, depth = 3, side = "default" } = Ast
 const id = propId || `toc-wrapper-${side}`;
 ---
 
-<WidgetLayout name="Table of Contents" id={id} class:list={[className, "toc-wrapper", "toc-hide"]} style={style}>
+<WidgetLayout name={i18n(I18nKey.tableOfContents)} id={id} class:list={[className, "toc-wrapper", "toc-hide"]} style={style}>
     <div class="toc-scroll-container">
         <table-of-contents class="group" data-depth={depth} data-navbar-height={NAVBAR_HEIGHT}>
             <div class="toc-inner-content relative"></div>

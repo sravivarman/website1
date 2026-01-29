@@ -1,15 +1,17 @@
 ---
 import { Icon } from "astro-icon/components";
 
+import I18nKey from "@i18n/i18nKey";
+import { i18n } from "@i18n/translation";
 import GridLayout from "@layouts/grid.astro";
 ---
 
-<GridLayout title="404 - Page Not Found" description="The page you are looking for could not be found.">
+<GridLayout title={i18n(I18nKey.notFound)} description={i18n(I18nKey.notFoundDescription)}>
     <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-96">
         <div class="card-base z-10 px-9 py-12 relative w-full flex flex-col items-center justify-center text-center">
             <!-- 404 大号数字 -->
             <div class="text-8xl md:text-9xl font-bold text-[var(--primary)] opacity-20 mb-4">
-                404
+                {i18n(I18nKey.notFound)}
             </div>
 
             <!-- 404 图标 -->
@@ -19,12 +21,12 @@ import GridLayout from "@layouts/grid.astro";
 
             <!-- 标题 -->
             <h1 class="text-3xl md:text-4xl font-bold mb-4 text-90">
-                Page Not Found
+                {i18n(I18nKey.notFoundTitle)}
             </h1>
 
             <!-- 描述 -->
             <p class="text-lg text-75 mb-8 max-w-md">
-                The page you are looking for could not be found.
+                {i18n(I18nKey.notFoundDescription)}
             </p>
 
             <!-- 返回首页按钮 -->
@@ -33,7 +35,7 @@ import GridLayout from "@layouts/grid.astro";
                 class="inline-flex items-center gap-2 px-6 py-3 bg-[var(--primary)] text-white rounded-[var(--radius-large)] hover:bg-[var(--primary-dark)] transition-colors duration-300 font-medium"
             >
                 <Icon name="material-symbols:home" class="text-xl" />
-                Back to Home
+                {i18n(I18nKey.backToHome)}
             </a>
 
             <!-- 装饰性元素 -->

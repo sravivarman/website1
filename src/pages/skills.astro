@@ -12,6 +12,8 @@ import {
     getTotalExperience,
     skillsData,
 } from "@utils/skills";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 import IconifyLoader from "@components/common/iconifyLoader.astro";
 import SkillCard from "@components/data/skillCard.astro";
 import GridLayout from "@layouts/grid.astro";
@@ -38,27 +40,27 @@ const skillsByCategory = categories.reduce(
     {} as Record<string, typeof skillsData>,
 );
 
-// Get category text
+// 获取分类的翻译文本
 const getCategoryText = (category: string) => {
     switch (category) {
         case "ai":
-            return "AI & Machine Learning";
+            return i18n(I18nKey.skillsAI);
         case "server":
-            return "Backend";
+            return i18n(I18nKey.skillsBackend);
         case "client":
-            return "Client-side";
+            return i18n(I18nKey.skillsClient);
         case "web":
-            return "Frontend";
+            return i18n(I18nKey.skillsFrontend);
         case "database":
-            return "Database";
+            return i18n(I18nKey.skillsDatabase);
         case "engines":
-            return "Engines";
+            return i18n(I18nKey.skillsEngines);
         case "tools":
-            return "Tools";
+            return i18n(I18nKey.skillsTools);
         case "others":
-            return "Others";
+            return i18n(I18nKey.skillsOthers);
         case UNCATEGORIZED:
-            return "Uncategorized";
+            return i18n(I18nKey.uncategorized);
         default:
             return category;
     }
@@ -77,10 +79,10 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
             <!-- 页面标题 -->
             <div class="flex flex-col items-start justify-center mb-8">
                 <h1 class="text-4xl font-bold text-black/90 dark:text-white/90 mb-2">
-                    Skills
+                    {i18n(I18nKey.skills)}
                 </h1>
                 <p class="text-lg text-black/60 dark:text-white/60">
-                    My technical expertise and proficiency
+                    {i18n(I18nKey.skillsSubtitle)}
                 </p>
             </div>
 
@@ -88,21 +90,21 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
             <div class="grid grid-cols-1 md:grid-cols-4 gap-4 mb-8">
                 <div class="bg-gradient-to-br from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4">
                     <div class="text-2xl font-bold text-blue-600 dark:text-blue-400">{stats.total}</div>
-                    <div class="text-sm text-blue-600/70 dark:text-blue-400/70">Total Skills</div>
+                    <div class="text-sm text-blue-600/70 dark:text-blue-400/70">{i18n(I18nKey.skillsTotal)}</div>
                 </div>
                 <div class="bg-gradient-to-br from-red-50 to-red-100 dark:from-red-900/20 dark:to-red-800/20 rounded-lg p-4">
                     <div class="text-2xl font-bold text-red-600 dark:text-red-400">{stats.byLevel.expert}</div>
-                    <div class="text-sm text-red-600/70 dark:text-red-400/70">Expert</div>
+                    <div class="text-sm text-red-600/70 dark:text-red-400/70">{i18n(I18nKey.skillsExpert)}</div>
                 </div>
                 <div class="bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 rounded-lg p-4">
                     <div class="text-2xl font-bold text-orange-600 dark:text-orange-400">{stats.byLevel.advanced}</div>
-                    <div class="text-sm text-orange-600/70 dark:text-orange-400/70">Advanced</div>
+                    <div class="text-sm text-orange-600/70 dark:text-orange-400/70">{i18n(I18nKey.skillsAdvanced)}</div>
                 </div>
                 <div class="bg-gradient-to-br from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4">
                     <div class="text-2xl font-bold text-purple-600 dark:text-purple-400">
                         {totalExperience.years}{totalExperience.months > 0 ? `.${totalExperience.months}` : ''}
                     </div>
-                    <div class="text-sm text-purple-600/70 dark:text-purple-400/70">Years Experience</div>
+                    <div class="text-sm text-purple-600/70 dark:text-purple-400/70">{i18n(I18nKey.skillExperience)}</div>
                 </div>
             </div>
 
@@ -110,7 +112,7 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
             {advancedSkills.length > 0 && (
                 <div class="mb-8">
                     <h2 class="text-2xl font-bold text-black/90 dark:text-white/90 mb-4">
-                        Advanced Skills
+                        {i18n(I18nKey.skillsAdvancedTitle)}
                     </h2>
                     <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
                         {advancedSkills.map((skill) => (
@@ -147,13 +149,13 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
             <!-- 技能分布图表 -->
             <div class="mt-12 pt-8 border-t border-black/10 dark:border-white/10">
                 <h2 class="text-2xl font-bold text-black/90 dark:text-white/90 mb-6">
-                    Skills Distribution
+                    {i18n(I18nKey.skillsDistribution)}
                 </h2>
                 <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
                     <!-- 按等级分布 -->
                     <div>
                         <h3 class="text-lg font-semibold text-black/80 dark:text-white/80 mb-4">
-                            Skills by Level
+                            {i18n(I18nKey.skillsByLevel)}
                         </h3>
                         <div class="space-y-3">
                             {Object.entries(stats.byLevel).map(([level, count]) => {
@@ -189,7 +191,7 @@ const allIcons = skillsData.map((skill) => skill.icon).filter(Boolean);
                     <!-- 按分类分布 -->
                     <div>
                         <h3 class="text-lg font-semibold text-black/80 dark:text-white/80 mb-4">
-                            Skills by Category
+                            {i18n(I18nKey.skillsByCategory)}
                         </h3>
                         <div class="space-y-3">
                             {Object.entries(stats.byCategory).map(([category, count]) => {

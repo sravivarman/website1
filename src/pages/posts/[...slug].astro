@@ -9,6 +9,8 @@ import { siteConfig, profileConfig, postConfig } from "@/config";
 import { getSortedPosts } from "@utils/content";
 import { formatDateToYYYYMMDD } from "@utils/date";
 import { getFileDirFromPath, getPostUrlBySlug, removeFileExtension} from "@utils/url";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 import License from "@components/post/license.astro";
 import Markdown from "@components/common/markdown.astro";
 import ImageWrapper from "@components/common/imageWrapper.astro";
@@ -124,7 +126,7 @@ const jsonLd = {
                     </div>
                     <div class="text-sm">
                         {remarkPluginFrontmatter.words}
-                        {" " + "words"}
+                        {" " + i18n(I18nKey.wordsCount)}
                     </div>
                 </div>
                 <div class="flex flex-row items-center">
@@ -225,13 +227,13 @@ const jsonLd = {
             <div
                 id="last-modified"
                 data-last-modified={lastModified}
-                data-prefix="Last updated"
-                data-year="year"
-                data-month="month"
-                data-day="day"
-                data-hour="hour"
-                data-minute="minute"
-                data-second="second"
+                data-prefix={i18n(I18nKey.lastModifiedPrefix)}
+                data-year={i18n(I18nKey.year)}
+                data-month={i18n(I18nKey.month)}
+                data-day={i18n(I18nKey.day)}
+                data-hour={i18n(I18nKey.hour)}
+                data-minute={i18n(I18nKey.minute)}
+                data-second={i18n(I18nKey.second)}
                 style="display: none;"
             ></div>
 
@@ -294,7 +296,7 @@ const jsonLd = {
                         <div class="flex flex-col gap-0.1">
                             <div id="modifiedtime" class="text-[1.0rem] leading-tight text-black/75 dark:text-white/75"></div>
                             <p class="text-[0.8rem] leading-tight text-black/75 dark:text-white/75">
-                                This post was last modified over a year ago and may be outdated.
+                                {i18n(I18nKey.lastModifiedOutdated)}
                             </p>
                         </div>
                     </div>
