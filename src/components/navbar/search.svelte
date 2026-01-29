@@ -6,6 +6,8 @@ import type { SearchResult } from "@/global";
 import { url } from "@utils/url";
 import { navigateToPage } from "@utils/navigation";
 import { onClickOutside } from "@utils/widget";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 import DropdownPanel from "@/components/common/DropdownPanel.svelte";
 
 

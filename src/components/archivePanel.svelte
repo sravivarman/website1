@@ -2,6 +2,8 @@
 import { onMount } from "svelte";
 
 import { getPostUrl } from "@utils/url";
+import { i18n } from "@i18n/translation";
+import I18nKey from "@i18n/i18nKey";
 
 
 interface Post {
