@@ -1,67 +1,65 @@
 import { LinkPreset, type NavbarLink } from "@/types/config";
-import { i18n } from "@i18n/translation";
-import I18nKey from "@i18n/i18nKey";
 
 
 export const LinkPresets: { [key in LinkPreset]: NavbarLink } = {
     [LinkPreset.Home]: {
-        name: i18n(I18nKey.home),
+        name: "Home",
         url: "/",
         icon: "material-symbols:home",
         description: "Twilight - A simple, clean, and beautiful blog theme.",
     },
     [LinkPreset.Archive]: {
-        name: i18n(I18nKey.archive),
+        name: "Archive",
         url: "/archive/",
         icon: "material-symbols:archive",
         description: "A chronological list of all published posts.",
     },
     [LinkPreset.Projects]: {
-        name: i18n(I18nKey.projects),
+        name: "Projects",
         url: "/projects/",
         icon: "material-symbols:work",
-        description: i18n(I18nKey.projectsSubtitle),
+        description: "My amazing projects showcase",
     },
     [LinkPreset.Skills]: {
-        name: i18n(I18nKey.skills),
+        name: "Skills",
         url: "/skills/",
         icon: "material-symbols:psychology",
-        description: i18n(I18nKey.skillsSubtitle),
+        description: "My technical expertise and proficiency",
     },
     [LinkPreset.Timeline]: {
-        name: i18n(I18nKey.timeline),
+        name: "Timeline",
         url: "/timeline/",
         icon: "material-symbols:timeline",
-        description: i18n(I18nKey.timelineSubtitle),
+        description: "My journey through time",
     },
     [LinkPreset.Diary]: {
-        name: i18n(I18nKey.diary),
+        name: "Diary",
         url: "/diary/",
         icon: "material-symbols:book",
-        description: i18n(I18nKey.diarySubtitle),
+        description: "Daily moments and thoughts",
     },
     [LinkPreset.Albums]: {
-        name: i18n(I18nKey.albums),
+        name: "Albums",
         url: "/albums/",
         icon: "material-symbols:photo-library",
-        description: i18n(I18nKey.albumsSubtitle),
+        description: "Photo collections and galleries",
     },
     [LinkPreset.Anime]: {
-        name: i18n(I18nKey.anime),
+        name: "Anime",
         url: "/anime/",
         icon: "material-symbols:movie",
         description: "A list of anime I have watched.",
     },
     [LinkPreset.Friends]: {
-        name: i18n(I18nKey.friends),
+        name: "Friends",
         url: "/friends/",
         icon: "material-symbols:group",
         description: "A curated list of friend sites.",
     },
     [LinkPreset.About]: {
-        name: i18n(I18nKey.about),
+        name: "About",
         url: "/about/",
         icon: "material-symbols:info",
-        description: i18n(I18nKey.about),
+        description: "About me",
     },
 };

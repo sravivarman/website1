@@ -11,8 +11,6 @@ import {
 import { onClickOutside } from "@utils/widget";
 import type { WALLPAPER_MODE } from "@/types/config";
 import { siteConfig } from "@/config";
-import { i18n } from "@i18n/translation";
-import I18nKey from "@i18n/i18nKey";
 import DropdownItem from "@/components/common/DropdownItem.svelte";
 import DropdownPanel from "@/components/common/DropdownPanel.svelte";
 
