@@ -3,8 +3,6 @@ import { LinkPresets } from "@constants/link-presets";
 import { LinkPreset } from "@/types/config";
 import { siteConfig } from "@/config";
 import { sortedMoments } from "@/utils/diary";
-import { i18n } from "@i18n/translation";
-import I18nKey from "@i18n/i18nKey";
 import GridLayout from "@layouts/grid.astro";
 import BackwardButton from "@components/backwardButton.astro";
 
@@ -23,15 +21,15 @@ function formatTime(dateString: string): string {
         (now.getTime() + timeGap*60*60*1000 - date.getTime()) / (1000 * 60),
     );
     if (diffInMinutes < 60) {
-        return `${diffInMinutes}${i18n(I18nKey.diaryMinutesAgo)}`;
+        return `${diffInMinutes} minutes ago`;
     }
     if (diffInMinutes < 1440) {
         // 24小时
         const hours = Math.floor(diffInMinutes / 60);
-        return `${hours}${i18n(I18nKey.diaryHoursAgo)}`;
+        return `${hours} hours ago`;
     }
     const days = Math.floor(diffInMinutes / 1440);
-    return `${days}${i18n(I18nKey.diaryDaysAgo)}`;
+    return `${days} days ago`;
 }
 ---
 
@@ -50,7 +48,7 @@ function formatTime(dateString: string): string {
                         <div class="header-stats">
                             <div class="stat-item text-center">
                                 <span class="stat-number text-lg md:text-xl lg:text-2xl font-bold text-[var(--primary)]">{sortedMoments.length}</span>
-                                <span class="stat-label text-xs md:text-sm lg:text-base text-75">{i18n(I18nKey.diaryCount)}</span>
+                                <span class="stat-label text-xs md:text-sm lg:text-base text-75">Diary Entries</span>
                             </div>
                         </div>
                     </div>
@@ -68,7 +66,7 @@ function formatTime(dateString: string): string {
                                                 <div class="image-item relative rounded-md overflow-hidden aspect-square cursor-pointer hover:scale-105 transition-transform">
                                                     <img
                                                         src={image}
-                                                        alt={i18n(I18nKey.diaryImage)}
+                                                        alt="Diary Image"
                                                         class="w-full h-full object-cover"
                                                         loading="lazy"
                                                     />
@@ -92,7 +90,7 @@ function formatTime(dateString: string): string {
                 </div>
                 <!-- 底部提示 -->
                 <div class="moments-tips text-center mt-6 md:mt-8 lg:mt-10 text-75 text-xs md:text-sm lg:text-base italic">
-                    {i18n(I18nKey.diaryTips)}
+                    Share your daily moments and thoughts here!
                 </div>
             </div>
         </div>

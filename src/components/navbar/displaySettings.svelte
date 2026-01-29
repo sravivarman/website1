@@ -5,8 +5,6 @@ import { onMount } from "svelte";
 import { BREAKPOINT_LG } from "@constants/breakpoints";
 import { getDefaultHue, getHue, setHue } from "@utils/hue";
 import { onClickOutside } from "@utils/widget";
-import { i18n } from "@i18n/translation";
-import I18nKey from "@i18n/i18nKey";
 
 
 let hue = $state(getDefaultHue());
@@ -67,7 +65,7 @@ $effect(() => {
                     before:w-1 before:h-4 before:rounded-md before:bg-[var(--primary)]
                     before:absolute before:-left-3 before:top-[0.33rem]"
                 >
-                    {i18n(I18nKey.themeColor)}
+                    Theme Color
                     <button aria-label="Reset to Default" class="btn-regular w-7 h-7 rounded-md  active:scale-90"
                             class:opacity-0={hue === defaultHue} class:pointer-events-none={hue === defaultHue} onclick={resetHue}>
                         <div class="text-[var(--btn-content)]">
@@ -83,7 +81,7 @@ $effect(() => {
                 </div>
             </div>
             <div class="w-full h-6 px-1 bg-[oklch(0.80_0.10_0)] dark:bg-[oklch(0.70_0.10_0)] rounded select-none">
-                <input aria-label={i18n(I18nKey.themeColor)} type="range" min="0" max="360" bind:value={hue}
+                <input aria-label="Theme Color" type="range" min="0" max="360" bind:value={hue}
                     class="slider" id="colorSlider" step="5" style="width: 100%">
             </div>
         </div>

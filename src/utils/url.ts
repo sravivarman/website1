@@ -1,8 +1,5 @@
 import type { CollectionEntry } from "astro:content";
 
-import { i18n } from "@i18n/translation";
-import I18nKey from "@i18n/i18nKey";
-
 
 export function pathsEqual(path1: string, path2: string) {
     const normalizedPath1 = path1.replace(/^\/|\/$/g, "").toLowerCase();
@@ -51,7 +48,7 @@ export function getCategoryUrl(category: string | null): string {
     if (
         !category ||
         category.trim() === "" ||
-        category.trim().toLowerCase() === i18n(I18nKey.uncategorized).toLowerCase()
+        category.trim().toLowerCase() === "uncategorized"
     )
         return url("/archive/?uncategorized=true");
     return url(`/archive/?category=${encodeURIComponent(category.trim())}`);
