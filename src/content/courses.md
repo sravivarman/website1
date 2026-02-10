@@ -5,6 +5,7 @@
 The following table summarizes my teaching experience across undergraduate and postgraduate programs.
 | S. No. | Academic Year | Programme | Branch | Year / Semester | Course Title | College |
 |------:|--------------|-----------|--------|-----------------|--------------|---------|
+| 68 | 2025–2026 | B.Tech | CSE | I / II | Basic Electrical Engineering | VCE, Hyderabad |
 | 67 | 2025–2026 | B.Tech | EEE | III / II | Electric Vehicles | VCE, Hyderabad |
 | 66 | 2025–2026 | B.Tech | EEE | IV / I | IoT and its Applications | VCE, Hyderabad |
 | 65 | 2025–2026 | B.Tech | ECE | II / I | Network Analysis | VCE, Hyderabad |
