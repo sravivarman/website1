@@ -1,0 +1,66 @@
+---
+import { getCollection, render } from "astro:content";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+import Markdown from "@components/common/markdown.astro";
+
+export async function getStaticPaths() {
+    const courses = await getCollection("courses");
+    return courses.map((course) => ({
+        params: { id: course.id },
+        props: { course },
+    }));
+}
+
+const { course } = Astro.props;
+const { Content } = await render(course);
+---
+
+<GridLayout title={course.data.title} description={course.data.description}>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full">
+            <BackwardButton currentPath={Astro.url.pathname} />
+            
+            <!-- Header -->
+            <header class="mb-8">
+                <div class="flex items-center gap-3 mb-2">
+                    {course.data.code && (
+                        <span class="text-sm font-mono px-2 py-1 rounded bg-[var(--primary)] text-white">
+                            {course.data.code}
+                        </span>
+                    )}
+                    <span class="text-sm text-neutral-500">
+                        {course.data.semester} {course.data.academicYear}
+                    </span>
+                    {course.data.credits && (
+                        <span class="text-sm text-neutral-500">
+                            {course.data.credits} Credits
+                        </span>
+                    )}
+                </div>
+                <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+                    {course.data.title}
+                </h1>
+                {course.data.description && (
+                    <p class="text-neutral-600 dark:text-neutral-400">
+                        {course.data.description}
+                    </p>
+                )}
+                {course.data.tags && course.data.tags.length > 0 && (
+                    <div class="flex flex-wrap gap-2 mt-4">
+                        {course.data.tags.map((tag) => (
+                            <span class="text-xs px-2 py-1 rounded-full bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400">
+                                {tag}
+                            </span>
+                        ))}
+                    </div>
+                )}
+            </header>
+            
+            <!-- Course Content -->
+            <Markdown>
+                <Content />
+            </Markdown>
+        </div>
+    </div>
+</GridLayout>
