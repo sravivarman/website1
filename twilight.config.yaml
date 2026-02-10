@@ -189,8 +189,20 @@ navbar:
                     "Albums"
                 - # 二级导航链接 - 动画 (预设)
                     "Anime"
-        - # 一级导航链接 - 课程 (预设)
-            "Courses"
+        - # 一级导航链接 - 课程 (自定义)
+            name: "Courses"
+            url: "/courses/"
+            icon: "material-symbols:school"
+            description: "Learn. Apply. Succeed."
+            children:
+                - # 二级导航链接 - Basic Electrical Engineering
+                    name: "Basic Electrical Engineering"
+                    url: "/courses/basic-electrical-engineering/"
+                    icon: "material-symbols:bolt"
+                - # 二级导航链接 - Electric Vehicles
+                    name: "Electric Vehicles"
+                    url: "/courses/electric-vehicles/"
+                    icon: "material-symbols:electric-car"
         - # 一级导航链接 - 关于 (预设)
             "About"
 
