@@ -1,0 +1,126 @@
+---
+import { getEntry, render } from "astro:content";
+
+import { LinkPresets } from "@constants/link-presets";
+import { LinkPreset } from "@/types/config";
+import { getActiveCourses, getArchivedCourses } from "@utils/courses";
+import Markdown from "@components/common/markdown.astro";
+import GridLayout from "@layouts/grid.astro";
+import BackwardButton from "@components/backwardButton.astro";
+
+
+const pageTitle = LinkPresets[LinkPreset.Courses].name;
+const pageDescription = LinkPresets[LinkPreset.Courses].description;
+
+const coursesPost = await getEntry("spec", "courses");
+
+if (!coursesPost) {
+    throw new Error("courses page content not found");
+}
+
+const { Content } = await render(coursesPost);
+const activeCourses = await getActiveCourses();
+const archivedCourses = await getArchivedCourses();
+---
+
+<GridLayout title={pageTitle} description={pageDescription}>
+    <div class="flex w-full rounded-[var(--radius-large)] overflow-hidden relative min-h-32">
+        <div class="card-base z-10 px-9 py-6 relative w-full ">
+            <BackwardButton currentPath={Astro.url.pathname} />
+            <!-- Header -->
+            <header class="mb-8">
+                <h1 class="text-3xl font-bold text-neutral-900 dark:text-neutral-100 mb-3">
+                    {pageTitle}
+                </h1>
+                {pageDescription && (
+                    <p class="text-neutral-600 dark:text-neutral-400">
+                        {pageDescription}
+                    </p>
+                )}
+            </header>
+
+            <!-- Current Courses -->
+            {activeCourses.length > 0 && (
+                <section class="mb-10">
+                    <h2 class="text-xl font-semibold text-neutral-800 dark:text-neutral-200 mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-green-500 rounded-full"></span>
+                        Current Semester
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                        {activeCourses.map((item) => (
+                            <a href={`/courses/${item.id}/`} class="menu-card group flex flex-col p-5 rounded-xl border transition-all duration-300">
+                                <div class="flex items-start justify-between mb-2">
+                                    <div class="flex-1">
+                                        {item.code && (
+                                            <span class="text-xs font-mono text-[var(--primary)] mb-1 block">{item.code}</span>
+                                        )}
+                                        <h3 class="text-lg font-bold text-neutral-900 dark:text-neutral-100 group-hover:text-[var(--primary)] transition-colors duration-300">
+                                            {item.title}
+                                        </h3>
+                                    </div>
+                                    {item.cover && (
+                                        <img src={item.cover} alt={item.title} class="w-12 h-12 rounded-lg object-cover ml-3" />
+                                    )}
+                                </div>
+                                <p class="text-sm text-neutral-600 dark:text-neutral-400 line-clamp-2 mb-3">
+                                    {item.description}
+                                </p>
+                                <div class="flex items-center gap-2 text-xs text-neutral-500 mt-auto">
+                                    <span class="px-2 py-0.5 rounded bg-neutral-100 dark:bg-neutral-800">{item.semester} {item.academicYear}</span>
+                                    {item.credits && <span>{item.credits} Credits</span>}
+                                </div>
+                            </a>
+                        ))}
+                    </div>
+                </section>
+            )}
+
+            <!-- Past Courses -->
+            {archivedCourses.length > 0 && (
+                <section>
+                    <h2 class="text-xl font-semibold text-neutral-800 dark:text-neutral-200 mb-4 flex items-center gap-2">
+                        <span class="w-2 h-2 bg-neutral-400 rounded-full"></span>
+                        Past Courses
+                    </h2>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+                        {archivedCourses.map((item) => (
+                            <a href={`/courses/${item.id}/`} class="menu-card group flex flex-col p-4 rounded-xl border transition-all duration-300 opacity-75 hover:opacity-100">
+                                <div class="flex items-center gap-2 mb-1">
+                                    {item.code && (
+                                        <span class="text-xs font-mono text-neutral-500">{item.code}</span>
+                                    )}
+                                    <span class="text-xs text-neutral-400">{item.semester} {item.academicYear}</span>
+                                </div>
+                                <h3 class="text-base font-semibold text-neutral-800 dark:text-neutral-200 group-hover:text-[var(--primary)] transition-colors">
+                                    {item.title}
+                                </h3>
+                            </a>
+                        ))}
+                    </div>
+                </section>
+            )}
+
+            <Markdown class="mt-6">
+                <Content />
+            </Markdown>
+        </div>
+    </div>
+</GridLayout>
+
+<style>
+    .menu-card {
+        cursor: pointer;
+        background-color: none;
+        border-color: var(--line-divider);
+    }
+
+    .icon-wrapper {
+        background-color: color-mix(in oklch, var(--primary), transparent 85%);
+        color: var(--primary);
+    }
+
+    .menu-card:hover {
+        border-color: var(--primary);
+        background-color: color-mix(in oklch, var(--primary), transparent 95%);
+    }
+</style>

@@ -52,11 +52,11 @@ export const LinkPresets: { [key in LinkPreset]: NavbarLink } = {
         icon: "material-symbols:movie",
         description: "A list of anime I have watched.",
     },
-    [LinkPreset.Friends]: {
-        name: i18n(I18nKey.friends),
-        url: "/friends/",
-        icon: "material-symbols:group",
-        description: "A curated list of friend sites.",
+    [LinkPreset.Courses]: {
+        name: i18n(I18nKey.courses),
+        url: "/courses/",
+        icon: "material-symbols:school",
+        description: i18n(I18nKey.coursesSubtitle),
     },
     [LinkPreset.About]: {
         name: i18n(I18nKey.about),

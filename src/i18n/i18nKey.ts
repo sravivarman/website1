@@ -185,8 +185,9 @@ enum I18nKey {
     animeEmpty = "animeEmpty",
     animeEmptyBangumi = "animeEmptyBangumi",
 
-    // 友链页面
-    friends = "friends",
+    // 课程页面
+    courses = "courses",
+    coursesSubtitle = "coursesSubtitle",
 
     // RSS页面
     rss = "rss",

@@ -50,7 +50,25 @@ const specCollection = defineCollection({
     loader: glob({ pattern: '[^_]*.{md,mdx}', base: "./src/content" }),
     schema: z.object({}),
 });
+
+const coursesCollection = defineCollection({
+    loader: glob({ pattern: '**/[^_]*.{md,mdx}', base: "./src/content/courses" }),
+    schema: z.object({
+        title: z.string(),
+        code: z.string().optional().default(""),  // Course code e.g., CS101
+        description: z.string().optional().default(""),
+        cover: z.string().optional().default(""),
+        academicYear: z.string(),  // e.g., "2025-2026"
+        semester: z.enum(["Fall", "Spring", "Summer", "Winter", "Odd", "Even"]),
+        credits: z.number().optional(),
+        tags: z.array(z.string()).optional().default([]),
+        active: z.boolean().optional().default(true),  // Is this the current offering?
+        order: z.number().optional().default(0),
+    }),
+});
+
 export const collections = {
     posts: postsCollection,
     spec: specCollection,
+    courses: coursesCollection,
 };

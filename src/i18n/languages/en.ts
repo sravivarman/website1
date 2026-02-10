@@ -188,8 +188,9 @@ export const en: Translation = {
     [Key.animeEmpty]: "No anime data",
     [Key.animeEmptyBangumi]: "Please check Bangumi configuration or network connection",
 
-    // Friends Page
-    [Key.friends]: "Friends",
+    // Courses Page
+    [Key.courses]: "Courses",
+    [Key.coursesSubtitle]: "Learn. Apply. Succeed.",
 
     // RSS Page
     [Key.rss]: "RSS Feed",

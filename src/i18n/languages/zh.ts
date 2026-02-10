@@ -188,8 +188,9 @@ export const zh: Translation = {
     [Key.animeEmpty]: "暂无追番数据",
     [Key.animeEmptyBangumi]: "请检查 Bangumi 配置或网络连接",
 
-    // 友链页面
-    [Key.friends]: "友链",
+    // 课程页面
+    [Key.courses]: "课程",
+    [Key.coursesSubtitle]: "学习。应用。成功。",
 
     // RSS页面
     [Key.rss]: "RSS 订阅",

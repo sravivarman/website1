@@ -188,8 +188,9 @@ export const ja: Translation = {
     [Key.animeEmpty]: "アニメデータなし",
     [Key.animeEmptyBangumi]: "Bangumiの設定またはネットワーク接続を確認してください",
 
-    // 友達ページ
-    [Key.friends]: "友達",
+    // コースページ
+    [Key.courses]: "コース",
+    [Key.coursesSubtitle]: "学ぶ。応用する。成功する。",
 
     // RSSページ
     [Key.rss]: "RSSフィード",
