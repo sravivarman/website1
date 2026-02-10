@@ -47,7 +47,8 @@ class TypewriterEffect {
         this.deleteSpeed = parseInt(element.dataset.deleteSpeed || '50');
         this.pauseTime = parseInt(element.dataset.pauseTime || '2000');
 
-        // 如果有多条文本且未启用打字机效果，随机显示一条
+        // 添加调试信息（仅在开发环境或需要时）
+        if (element        // 如果有多条文本且未启用打字机效果，随机显示一条
         if (this.texts.length > 1 && !this.isTypewriterEnabled()) {
             this.showRandomText();
         } else {
@@ -115,7 +116,9 @@ class TypewriterEffect {
     }
 }
 
-// 初始化所有打字机效果
+let typewriterInstances: TypewriterEffect[] = [];
+
+function initiali// 初始化所有打字机效果
 document.addEventListener('DOMContentLoaded', () => {
     const typewriterElements = document.querySelectorAll('.typewriter');
     typewriterElements.forEach((element) => {
@@ -129,26 +132,3 @@ document.addEventListener('swup:contentReplaced', () => {
     typewriterElements.forEach((element) => {
         new TypewriterEffect(element as HTMLElement);
     });
-});
-</script>
-
-<style>
-.typewriter {
-    position: relative;
-}
-
-.typewriter::after {
-    content: '|';
-    animation: blink 1s infinite;
-    margin-left: 2px;
-}
-
-@keyframes blink {
-    0%, 50% {
-        opacity: 1;
-    }
-    51%, 100% {
-        opacity: 0;
-    }
-}
-</style>
