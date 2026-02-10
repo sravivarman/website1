@@ -1,0 +1,196 @@
+---
+import type { CollectionEntry } from "astro:content";
+import { getCollection } from "astro:content";
+import GridLayout from "@layouts/grid.astro";
+import { Icon } from "astro-icon/components";
+import { url } from "@utils/url";
+
+// Get all posts and organize them by course/category
+const allPosts = await getCollection("posts");
+
+// Group posts by category (treating categories as courses)
+const courseGroups = allPosts.reduce((acc, post) => {
+    const course = post.data.category || "Uncategorized";
+    if (!acc[course]) {
+        acc[course] = [];
+    }
+    acc[course].push(post);
+    return acc;
+}, {} as Record<string, CollectionEntry<"posts">[]>);
+
+// Sort courses and get latest post from each course
+const courses = Object.entries(courseGroups).map(([courseName, posts]) => {
+    const sortedPosts = posts
+        .filter(post => !post.data.draft)
+        .sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime());
+    
+    return {
+        name: courseName,
+        postCount: sortedPosts.length,
+        latestPost: sortedPosts[0],
+        posts: sortedPosts
+    };
+}).sort((a, b) => b.postCount - a.postCount); // Sort by number of posts
+
+const pageTitle = "Course Notes & Collections";
+const pageDescription = "Explore my collection of course notes and academic resources organized by subject.";
+---
+
+<GridLayout title={pageTitle} description={pageDescription}>
+    <div class="onload-animation-up">
+        <!-- Hero Section -->
+        <div class="card-base p-8 mb-8">
+            <h1 class="text-4xl font-bold mb-4 text-neutral-900 dark:text-neutral-100">
+                Welcome to My Course Notes
+            </h1>
+            <p class="text-lg text-neutral-600 dark:text-neutral-400 mb-6">
+                A collection of course notes, study materials, and academic resources organized by subject area.
+                Each course contains detailed notes, examples, and supplementary materials to aid in learning.
+            </p>
+            <div class="flex flex-wrap gap-4">
+                <a 
+                    href={url("/archive/")}
+                    class="btn-regular px-4 py-2 rounded-lg flex items-center gap-2"
+                >
+                    <Icon name="material-symbols:library-books" size={20} />
+                    Browse All Notes
+                </a>
+                <a 
+                    href={url("/projects/")}
+                    class="btn-card px-4 py-2 rounded-lg flex items-center gap-2"
+                >
+                    <Icon name="material-symbols:code" size={20} />
+                    View Projects
+                </a>
+            </div>
+        </div>
+
+        <!-- Courses Grid -->
+        <div class="grid gap-6 md:grid-cols-2 lg:grid-cols-3">
+            {courses.map((course, index) => (
+                <div 
+                    class="card-base p-6 hover:scale-105 transition-transform duration-300"
+                    style={`animation-delay: ${(index + 1) * 100}ms`}
+                >
+                    <div class="flex items-start justify-between mb-4">
+                        <h3 class="text-xl font-semibold text-neutral-900 dark:text-neutral-100">
+                            {course.name}
+                        </h3>
+                        <span class="text-sm bg-primary/10 text-primary px-2 py-1 rounded-full">
+                            {course.postCount} {course.postCount === 1 ? 'note' : 'notes'}
+                        </span>
+                    </div>
+                    
+                    {course.latestPost && (
+                        <div class="mb-4">
+                            <p class="text-sm text-neutral-500 dark:text-neutral-400 mb-2">
+                                Latest:
+                            </p>
+                            <a 
+                                href={url(`/posts/${course.latestPost.slug}/`)}
+                                class="block text-neutral-800 dark:text-neutral-200 hover:text-primary transition-colors"
+                            >
+                                <h4 class="font-medium line-clamp-2">
+                                    {course.latestPost.data.title}
+                                </h4>
+                            </a>
+                            <time class="text-xs text-neutral-400 mt-1 block">
+                                {new Date(course.latestPost.data.published).toLocaleDateString('en-US', {
+                                    year: 'numeric',
+                                    month: 'short',
+                                    day: 'numeric'
+                                })}
+                            </time>
+                        </div>
+                    )}
+                    
+                    <div class="flex justify-between items-center mt-auto pt-4 border-t border-neutral-200 dark:border-neutral-700">
+                        <a 
+                            href={url(`/archive/?category=${encodeURIComponent(course.name)}`)}
+                            class="text-primary hover:text-primary/80 transition-colors text-sm font-medium"
+                        >
+                            View all notes →
+                        </a>
+                        {course.latestPost && (
+                            <div class="flex gap-2 text-xs text-neutral-400">
+                                {course.latestPost.data.tags?.slice(0, 2).map(tag => (
+                                    <span class="bg-neutral-100 dark:bg-neutral-800 px-2 py-1 rounded">
+                                        {tag}
+                                    </span>
+                                ))}
+                            </div>
+                        )}
+                    </div>
+                </div>
+            ))}
+        </div>
+
+        {courses.length === 0 && (
+            <div class="card-base p-12 text-center">
+                <Icon name="material-symbols:school" size={64} class="mx-auto mb-4 text-neutral-400" />
+                <h3 class="text-xl font-semibold mb-2 text-neutral-600 dark:text-neutral-300">
+                    No courses found
+                </h3>
+                <p class="text-neutral-500 dark:text-neutral-400 mb-6">
+                    Start adding your course notes by creating posts with categories.
+                </p>
+                <a 
+                    href="/admin/"
+                    class="btn-regular px-4 py-2 rounded-lg inline-flex items-center gap-2"
+                >
+                    <Icon name="material-symbols:add" size={20} />
+                    Add First Course Note
+                </a>
+            </div>
+        )}
+
+        <!-- Recent Activity Section -->
+        {courses.length > 0 && (
+            <div class="card-base p-8 mt-8">
+                <h2 class="text-2xl font-bold mb-6 text-neutral-900 dark:text-neutral-100">
+                    Recent Activity
+                </h2>
+                <div class="space-y-4">
+                    {allPosts
+                        .filter(post => !post.data.draft)
+                        .sort((a, b) => new Date(b.data.published).getTime() - new Date(a.data.published).getTime())
+                        .slice(0, 5)
+                        .map(post => (
+                            <div class="flex items-center justify-between py-3 border-b border-neutral-200 dark:border-neutral-700 last:border-0">
+                                <div class="flex-1">
+                                    <a 
+                                        href={url(`/posts/${post.slug}/`)}
+                                        class="text-neutral-800 dark:text-neutral-200 hover:text-primary transition-colors"
+                                    >
+                                        <h4 class="font-medium">{post.data.title}</h4>
+                                    </a>
+                                    <p class="text-sm text-neutral-500 dark:text-neutral-400">
+                                        {post.data.category} • {new Date(post.data.published).toLocaleDateString()}
+                                    </p>
+                                </div>
+                                <Icon name="material-symbols:arrow-forward" size={20} class="text-neutral-400" />
+                            </div>
+                        ))
+                    }
+                </div>
+                <div class="mt-6 text-center">
+                    <a 
+                        href={url("/archive/")}
+                        class="text-primary hover:text-primary/80 transition-colors font-medium"
+                    >
+                        View all course notes →
+                    </a>
+                </div>
+            </div>
+        )}
+    </div>
+</GridLayout>
+
+<style>
+    .line-clamp-2 {
+        display: -webkit-box;
+        -webkit-line-clamp: 2;
+        -webkit-box-orient: vertical;
+        overflow: hidden;
+    }
+</style>
