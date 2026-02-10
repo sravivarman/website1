@@ -47,6 +47,17 @@ class TypewriterEffect {
         this.deleteSpeed = parseInt(element.dataset.deleteSpeed || '50');
         this.pauseTime = parseInt(element.dataset.pauseTime || '2000');
 
+        // 添加调试信息（仅在开发环境或需要时）
+        if (element.dataset.debug === 'true' || window.location.hostname === 'localhost') {
+            console.log('Typewriter initialized:', {
+                texts: this.texts,
+                speed: this.speed,
+                deleteSpeed: this.deleteSpeed,
+                pauseTime: this.pauseTime,
+                element: this.element
+            });
+        }
+
         // 如果有多条文本且未启用打字机效果，随机显示一条
         if (this.texts.length > 1 && !this.isTypewriterEnabled()) {
             this.showRandomText();
@@ -69,7 +80,23 @@ class TypewriterEffect {
 
     private start() {
         if (this.texts.length === 0) return;
-        this.type();
+        
+        // 确保元素可见后再开始动画
+        const checkVisibilityAndStart = () => {
+            const rect = this.element.getBoundingClientRect();
+            const computedStyle = window.getComputedStyle(this.element);
+            
+            if (computedStyle.display !== 'none' && 
+                computedStyle.visibility !== 'hidden' && 
+                parseFloat(computedStyle.opacity) > 0) {
+                this.type();
+            } else {
+                // 如果元素不可见，等待一段时间后重试
+                setTimeout(checkVisibilityAndStart, 200);
+            }
+        };
+        
+        checkVisibilityAndStart();
     }
 
     private getCurrentText(): string {
@@ -116,6 +143,8 @@ class TypewriterEffect {
 }
 
 let typewriterInstances: TypewriterEffect[] = [];
+let initializationAttempts = 0;
+const MAX_INITIALIZATION_ATTEMPTS = 10;
 
 function initializeTypewriters() {
     // 清理之前的实例
@@ -123,43 +152,78 @@ function initializeTypewriters() {
     typewriterInstances = [];
     
     const typewriterElements = document.querySelectorAll('.typewriter');
-    typewriterElements.forEach((element) => {
+    
+    // 检查元素是否可见和可用
+    const visibleElements = Array.from(typewriterElements).filter(element => {
+        const rect = element.getBoundingClientRect();
+        const computedStyle = window.getComputedStyle(element);
+        return computedStyle.display !== 'none' && 
+               computedStyle.visibility !== 'hidden' && 
+               computedStyle.opacity !== '0' &&
+               (rect.width > 0 || rect.height > 0);
+    });
+    
+    if (visibleElements.length === 0 && initializationAttempts < MAX_INITIALIZATION_ATTEMPTS) {
+        initializationAttempts++;
+        // 如果没有可见元素，稍后重试
+        setTimeout(initializeTypewriters, 200);
+        return;
+    }
+    
+    visibleElements.forEach((element) => {
         const instance = new TypewriterEffect(element as HTMLElement);
         typewriterInstances.push(instance);
     });
+    
+    initializationAttempts = 0;
 }
 
-// 初始化所有打字机效果
-document.addEventListener('DOMContentLoaded', () => {
-    // 如果页面还在加载中，等待加载完成
-    if (document.documentElement.classList.contains('is-loading')) {
-        // 等待loading overlay被移除后再初始化
-        const checkAndInit = () => {
-            if (!document.documentElement.classList.contains('is-loading')) {
-                setTimeout(initializeTypewriters, 100); // 稍微延迟以确保动画开始
-            } else {
-                setTimeout(checkAndInit, 50);
-            }
-        };
-        checkAndInit();
+function waitForElementsAndInitialize() {
+    const checkElements = () => {
+        const typewriterElements = document.querySelectorAll('.typewriter');
+        if (typewriterElements.length > 0) {
+            initializeTypewriters();
+        } else if (initializationAttempts < MAX_INITIALIZATION_ATTEMPTS) {
+            initializationAttempts++;
+            setTimeout(checkElements, 100);
+        }
+    };
+    checkElements();
+}
+
+// 多重初始化策略以确保在各种环境下都能工作
+if (typeof window !== 'undefined') {
+    // 策略 1: DOMContentLoaded
+    if (document.readyState === 'loading') {
+        document.addEventListener('DOMContentLoaded', () => {
+            setTimeout(waitForElementsAndInitialize, 100);
+        });
     } else {
-        initializeTypewriters();
+        // 如果DOM已经加载完成
+        setTimeout(waitForElementsAndInitialize, 100);
     }
-});
+    
+    // 策略 2: window load (备用方案)
+    window.addEventListener('load', () => {
+        setTimeout(() => {
+            if (typewriterInstances.length === 0) {
+                waitForElementsAndInitialize();
+            }
+        }, 1500); // 给loading overlay充足时间完成动画
+    });
+    
+    // 策略 3: 延迟初始化 (为GitHub Pages等慢环境提供额外时间)
+    setTimeout(() => {
+        if (typewriterInstances.length === 0) {
+            waitForElementsAndInitialize();
+        }
+    }, 2000);
+}
 
 // 支持页面切换时重新初始化
 document.addEventListener('swup:contentReplaced', () => {
+    initializationAttempts = 0;
     initializeTypewriters();
-});
-
-// 当页面完全加载时也初始化（备用方案）
-window.addEventListener('load', () => {
-    // 延迟初始化以确保loading overlay完全消失
-    setTimeout(() => {
-        if (typewriterInstances.length === 0) {
-            initializeTypewriters();
-        }
-    }, 1300); // 等待loading overlay动画完成(600ms) + banner恢复(600ms) + 额外缓冲(100ms)
 });
 </script>
 
