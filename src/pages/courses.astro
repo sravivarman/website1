@@ -48,7 +48,7 @@ const archivedCourses = await getArchivedCourses();
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
                         {activeCourses.map((item) => (
-                            <a href={`/courses/${item.id}/`} class="menu-card group flex flex-col p-5 rounded-xl border transition-all duration-300">
+                            <a href={`${import.meta.env.BASE_URL}courses/${item.id}/`} class="menu-card group flex flex-col p-5 rounded-xl border transition-all duration-300">
                                 <div class="flex items-start justify-between mb-2">
                                     <div class="flex-1">
                                         {item.code && (
@@ -84,7 +84,7 @@ const archivedCourses = await getArchivedCourses();
                     </h2>
                     <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
                         {archivedCourses.map((item) => (
-                            <a href={`/courses/${item.id}/`} class="menu-card group flex flex-col p-4 rounded-xl border transition-all duration-300 opacity-75 hover:opacity-100">
+                            <a href={`${import.meta.env.BASE_URL}courses/${item.id}/`} class="menu-card group flex flex-col p-4 rounded-xl border transition-all duration-300 opacity-75 hover:opacity-100">
                                 <div class="flex items-center gap-2 mb-1">
                                     {item.code && (
                                         <span class="text-xs font-mono text-neutral-500">{item.code}</span>
