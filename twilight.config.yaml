@@ -168,11 +168,11 @@ navbar:
             "Archive"
         - # 一级导航链接 - 展览 (自定义)
             # 导航名称
-            name: "Courses"
+            name: "Portfolio"
             # 导航链接
-            url: "/courses/"
+            url: "/portfolio/"
             # 导航图标
-            icon: "material-symbols:book"
+            icon: "material-symbols:work"
             # 导航描述
             description: "Learn. Apply. Succeed."
             # 子链接
