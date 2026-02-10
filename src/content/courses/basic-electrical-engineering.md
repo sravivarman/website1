@@ -45,56 +45,24 @@ After the completion of the course, the student will be able to:
 ## Syllabus
 
 ### Unit 1: DC Circuits
-- Electrical circuit elements (R, L and C)
-- Ohm's Law, KVL and KCL
-- Types of sources, Source transformation
-- Network reduction techniques (Series and Parallel)
-- Mesh and Nodal analysis
-- Superposition theorem
-- Thevenin's and Norton's theorems (DC Excitation only)
-- Numerical problems
+- Electrical circuit elements (R, L and C), Ohm's Law, KVL and KCL, Types of sources, Source transformation, Network reduction techniques (Series and Parallel), Mesh and Nodal analysis, Superposition theorem, Thevenin's and Norton's theorems (DC Excitation only), Numerical problems.
 
 ### Unit 2: AC Circuits
-- Representation of sinusoidal waveforms
-- Average & RMS value
-- Peak factor, Form factor
-- j-notation
-- Analysis of single-phase AC circuits consisting of R, L, C, RL, RC, RLC combinations (series circuits only)
-- Numerical problems
+- Representation of sinusoidal waveforms, Average & RMS value, Peak factor, Form factor, j-notation, Analysis of single-phase AC circuits consisting of R, L, C, RL, RC, RLC combinations (series circuits only), Numerical problems.
 
 ### Unit 3: Single Phase Transformers
-- Working principle and constructional details
-- Types - Core and Shell type transformers
-- EMF equation
-- Transformer operation on No-Load and On-Load conditions
-- OC and SC tests on Transformer
-- Losses and Efficiency
-- Numerical problems on EMF equation
+- Working principle and constructional details, Types - Core and Shell type transformers, EMF equation, Transformer operation on No-Load and On-Load conditions, OC and SC tests on Transformer, Losses and Efficiency, Numerical problems on EMF equation.
 
 ### Unit 4: DC Machines
 - **DC Generators:**
-  - Construction
-  - Principle of operation
-  - EMF equation
-  - Methods of excitation - Separately excited and Self-excited generators
-  - Numerical problems on EMF equation
+  - Construction, Principle of operation, EMF equation, Methods of excitation - Separately excited and Self-excited generators, Numerical problems on EMF equation. 
 - **DC Motors:**
-  - Principle of operation
-  - Concept of Back EMF
-  - Torque equation
-  - Load test on DC Shunt motor (Conceptual description only)
+  - Principle of operation, Concept of Back EMF, Torque equation, Load test on DC Shunt motor (Conceptual description only).
 
 ### Unit 5: AC Machines
-- Generation of rotating magnetic fields
-- Construction and working of a three-phase Induction motor
-- Concept of slip
-- Torque production - Starting and Running torques
-- Torque-Slip characteristics
-- Numerical problems on slip
+- Generation of rotating magnetic fields, Construction and working of a three-phase Induction motor, Concept of slip, Torque production, Starting and Running torques, Torque-Slip characteristics, Numerical problems on slip
 - **Synchronous Generator:**
-  - Construction - Salient pole and Non-salient pole generators
-  - Working principle of synchronous generator
-  - No-Load Characteristics (Conceptual description only)
+  - Construction - Salient pole and Non-salient pole generators, Working principle of synchronous generator, No-Load Characteristics (Conceptual description only).
 
 ---
 
@@ -145,9 +113,6 @@ After the completion of the course, the student will be able to:
 ---
 
 ## Course Policy
-
-### Attendance
-- Minimum 75% attendance is mandatory
 
 ### Academic Integrity
 - Plagiarism in assignments will result in zero marks

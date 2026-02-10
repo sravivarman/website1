@@ -40,45 +40,16 @@ After the completion of the course, the student will be able to:
 ## Syllabus
 
 ### Unit 1: Introduction to Electric Vehicles
-- EV System: EV Configuration - Fixed & variable gearing, single & multiple motor drive, In-wheel drives
-- Components of an EV
-- Components of ICEVs
-- EV History, the early years, recent EVs and HEVs
-- Types of EVs
-- EV Advantages
-- Comparison of EVs and ICEVs w.r.t efficiency, pollution, capital & operating cost
+- EV System: EV Configuration - Fixed & variable gearing, single & multiple motor drive, In-wheel drives, Components of an EV, Components of ICEVs, EV History, the early years, recent EVs and HEVs, Types of EVs, EV Advantages, Comparison of EVs and ICEVs w.r.t efficiency, pollution, capital & operating cost.
 
 ### Unit 2: Hybrid Electric Vehicles
-- Types of Hybrid Vehicles - Series, parallel, series-parallel and complex HEVs
-- Advantages and Disadvantages of HEVs
-- Concept of Hybrid Electric Drive Trains
-- Architectures and power flow control of Hybrid Electric Drive Trains
+- Types of Hybrid Vehicles - Series, parallel, series-parallel and complex HEVs, Advantages and Disadvantages of HEVs, Concept of Hybrid Electric Drive Trains, Architectures and power flow control of Hybrid Electric Drive Trains.
 
 ### Unit 3: Electric Propulsion Systems
-- Choice of electric propulsion systems
-- Block diagram of EV propulsion system
-- BLDC Machine Construction and Classification
-- Basic Principles of BLDC Motor Drives
-- Application to Electric Vehicles
-- Switched Reluctance Motor Drives
-- Basic Magnetic Structure
-- Torque Production
-- SRM Drive Converter
-- Modes of Operation
-- Generating Mode of Operation
+- Choice of electric propulsion systems, Block diagram of EV propulsion system, BLDC Machine Construction and Classification, Basic Principles of BLDC Motor Drives, Application to Electric Vehicles, Switched Reluctance Motor Drives, Basic Magnetic Structure, Torque Production, SRM Drive Converter, Modes of Operation, Generating Mode of Operation
 
 ### Unit 4: Introduction to Energy Storage Requirements
-- Electrochemistry of battery cells
-- Battery parameters
-- Types of Batteries:
-  - Lead–Acid Batteries
-  - Ni-Cd Batteries
-  - NiMH Batteries
-  - Lithium-Ion Batteries
-- EV Charging: Types of charging systems
-  - Conductive charging (Onboard & offboard charging)
-  - Inductive charging
-  - Wireless charging
+- Electrochemistry of battery cells, Battery parameters, Types of Batteries: Lead–Acid Batteries, Ni-Cd Batteries, NiMH Batteries, Lithium-Ion Batteries, EV Charging: Types of charging systems, Conductive charging (Onboard & offboard charging), Inductive charging, Wireless charging.
 
 ### Unit 5: Charging Infrastructure
 - Domestic Charging Infrastructure
@@ -153,9 +124,6 @@ After the completion of the course, the student will be able to:
 ---
 
 ## Course Policy
-
-### Attendance
-- Minimum 75% attendance is mandatory
 
 ### Academic Integrity
 - Plagiarism in assignments will result in zero marks
