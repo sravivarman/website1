@@ -115,51 +115,20 @@ class TypewriterEffect {
     }
 }
 
-let typewriterInstances: TypewriterEffect[] = [];
-
-function initializeTypewriters() {
-    // 清理之前的实例
-    typewriterInstances.forEach(instance => instance.destroy());
-    typewriterInstances = [];
-    
-    const typewriterElements = document.querySelectorAll('.typewriter');
-    typewriterElements.forEach((element) => {
-        const instance = new TypewriterEffect(element as HTMLElement);
-        typewriterInstances.push(instance);
-    });
-}
-
 // 初始化所有打字机效果
 document.addEventListener('DOMContentLoaded', () => {
-    // 如果页面还在加载中，等待加载完成
-    if (document.documentElement.classList.contains('is-loading')) {
-        // 等待loading overlay被移除后再初始化
-        const checkAndInit = () => {
-            if (!document.documentElement.classList.contains('is-loading')) {
-                setTimeout(initializeTypewriters, 100); // 稍微延迟以确保动画开始
-            } else {
-                setTimeout(checkAndInit, 50);
-            }
-        };
-        checkAndInit();
-    } else {
-        initializeTypewriters();
-    }
+    const typewriterElements = document.querySelectorAll('.typewriter');
+    typewriterElements.forEach((element) => {
+        new TypewriterEffect(element as HTMLElement);
+    });
 });
 
 // 支持页面切换时重新初始化
 document.addEventListener('swup:contentReplaced', () => {
-    initializeTypewriters();
-});
-
-// 当页面完全加载时也初始化（备用方案）
-window.addEventListener('load', () => {
-    // 延迟初始化以确保loading overlay完全消失
-    setTimeout(() => {
-        if (typewriterInstances.length === 0) {
-            initializeTypewriters();
-        }
-    }, 1300); // 等待loading overlay动画完成(600ms) + banner恢复(600ms) + 额外缓冲(100ms)
+    const typewriterElements = document.querySelectorAll('.typewriter');
+    typewriterElements.forEach((element) => {
+        new TypewriterEffect(element as HTMLElement);
+    });
 });
 </script>
 
